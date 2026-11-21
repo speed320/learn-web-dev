@@ -1,13 +1,576 @@
 /* Стили страницы.
    Пишите здесь. */
 
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+:root {
+  --bg-header: #6a5e5e;
+  --bg-main: #746767;
+  --bg-footer: #574b4b;
+  --bg-card: #edeae6;
+
+  --text-light: #ffffff;
+  --text-soft: #e6e1e1;
+  --text-muted: #9b8f8f;
+  --text-dark: #2c2626;
+
+  /* Кнопка основная (бирюзовая из UI-kit) */
+  --primary-bg: #176366;
+  --primary-border: #114c4e;
+  --primary-hover-bg: #3b7b7e;
+  --primary-active-bg: #125053;
+  --primary-disabled-bg: #5d888a;
+
+  /* Кнопка/слот второстепенная (серо-голубая из UI-kit) */
+  --secondary-bg: #8195a5;
+  --secondary-border: #6b8090;
+  --secondary-hover-bg: #91a4b3;
+  --secondary-active-bg: #6a7f8f;
+  --disabled-bg: #b3c0ca;
+  --disabled-border: #9daab5;
+  --disabled-text: #d7dfe5;
+
+  /* Прогресс-бар */
+  --step-done: #176366;
+  --step-todo: #679192;
+  --line-divider: rgba(255, 255, 255, 0.22);
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  font-family: sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+/* ================= HEADER & STEPS ================= */
+
+.header {
+  background-color: var(--bg-header);
+}
+
+.header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 0 24px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav__link {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.nav__link:hover {
+  color: var(--text-light);
+  text-decoration: underline;
+}
+
+.header__divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--line-divider);
+}
+
+.steps {
+  padding: 24px 0;
+}
+
+.steps__list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+}
+
+.steps__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.steps__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--step-todo);
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.steps__bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--step-todo);
+}
+
+.steps__item--done .steps__circle,
+.steps__item--done .steps__bar {
+  background-color: var(--step-done);
+}
+
+.steps__separator {
+  width: 18px;
+  height: 1px;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ================= MAIN ================= */
+
+.main {
+  flex: 1;
+  background-color: var(--bg-main);
+  padding: 40px 0 64px;
+}
+
+.booking-top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 34px;
+}
+
+.booking-top__title {
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+/* Общие стили кнопок (по UI-kit) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.btn--secondary {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--secondary-border);
+  color: var(--text-light);
+}
+
+.btn--secondary:hover {
+  background-color: var(--secondary-hover-bg);
+  color: #edf2f6;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn--secondary:active {
+  background-color: var(--secondary-active-bg);
+}
+
+.btn--back {
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btn--primary {
+  background-color: var(--primary-bg);
+  border: 1px solid var(--primary-border);
+  color: var(--text-light);
+}
+
+.btn--primary:hover {
+  background-color: var(--primary-hover-bg);
+  color: #e6efef;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn--primary:active {
+  background-color: var(--primary-active-bg);
+}
+
+.btn--submit {
+  padding: 12px 36px;
+  font-size: 15px;
+}
+
+/* Две карточки */
+.booking-grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  color: var(--text-dark);
+}
+
+.card--calendar {
+  flex: 1.35;
+  padding: 26px 26px 28px;
+}
+
+.card--time {
+  flex: 1;
+  padding: 26px 26px 32px;
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.card__title--time {
+  margin-bottom: 22px;
+}
+
+/* Календарь */
+.calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.calendar__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #f6f4f2;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.calendar__arrow:hover {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calendar__arrow:active {
+  background-color: #e3dfdc;
+}
+
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.calendar__weekday {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--secondary-border);
+  background-color: var(--secondary-bg);
+  color: var(--text-light);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.day-btn:hover:not(:disabled) {
+  background-color: var(--secondary-hover-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.day-btn:active:not(:disabled) {
+  background-color: var(--secondary-active-bg);
+}
+
+.day-btn--disabled,
+.day-btn:disabled {
+  background-color: var(--disabled-bg);
+  border-color: var(--disabled-border);
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+
+/* Слоты времени */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 20px;
+}
+
+.slot-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid var(--secondary-border);
+  background-color: var(--secondary-bg);
+  color: var(--text-light);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.slot-btn:hover:not(:disabled) {
+  background-color: var(--secondary-hover-bg);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.slot-btn:active:not(:disabled) {
+  background-color: var(--secondary-active-bg);
+}
+
+.slot-btn--busy,
+.slot-btn:disabled {
+  background-color: var(--disabled-bg);
+  border-color: var(--disabled-border);
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+
+/* Нижняя панель под карточками */
+.booking-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.booking-actions__hint {
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+  background-color: var(--bg-footer);
+  padding: 46px 0 32px;
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 36px;
+}
+
+.footer__brand {
+  flex: 1.1;
+}
+
+.footer__logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.footer__desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footer__col {
+  flex: 1;
+}
+
+.footer__heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.footer__address {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-style: normal;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ccc5c5;
+  font-size: 14px;
+}
+
+.footer__icon {
+  flex-shrink: 0;
+  color: #b4aaaa;
+}
+
+.footer__phone {
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer__phone:hover {
+  text-decoration: underline;
+}
+
+.footer__schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  font-size: 14px;
+  color: #ccc5c5;
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer__policy {
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+.footer__policy:hover {
+  color: var(--text-light);
+}
+
+/* ================= АДАПТИВ ================= */
+
+@media (max-width: 900px) {
+  .booking-grid {
+    flex-direction: column;
+  }
+
+  .card--calendar,
+  .card--time {
+    width: 100%;
+    flex: none;
+  }
+
+  .footer__top {
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .header__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .nav__list {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .booking-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .booking-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }

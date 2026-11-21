@@ -1,26 +1,214 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Выбор даты и времени</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!--
-      ЗАДАНИЕ
-      ========
-      Сверстать страницу выбора даты и времени по своему макету.
-
-      Пока это только вёрстка. Никакого JavaScript — ни кликов,
-      ни переходов, ни выбора дня. Всё статично.
-
-      Стили пишите в styles.css. Разметку — здесь.
-    -->
-
-    <div class="page">
-      <!-- Начните отсюда. Разметьте шапку, основную область
-           с календарём и слотами, подвал. -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SERGIO — Выбор даты и времени</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <div class="header__top">
+      <a href="#" class="logo">SERGIO</a>
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#" class="nav__link">Услуга</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Галерея</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Команда</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Отзывы</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
     </div>
-  </body>
+  </div>
+
+  <div class="header__divider"></div>
+
+  <div class="container">
+    <nav class="steps" aria-label="Этапы записи">
+      <ol class="steps__list">
+        <li class="steps__item steps__item--done">
+          <span class="steps__circle">1</span>
+          <span class="steps__bar"></span>
+        </li>
+        <li class="steps__separator" aria-hidden="true"></li>
+
+        <li class="steps__item steps__item--done">
+          <span class="steps__circle">2</span>
+          <span class="steps__bar"></span>
+        </li>
+        <li class="steps__separator" aria-hidden="true"></li>
+
+        <li class="steps__item steps__item--done">
+          <span class="steps__circle">3</span>
+          <span class="steps__bar"></span>
+        </li>
+        <li class="steps__separator" aria-hidden="true"></li>
+
+        <li class="steps__item">
+          <span class="steps__circle">4</span>
+          <span class="steps__bar"></span>
+        </li>
+        <li class="steps__separator" aria-hidden="true"></li>
+
+        <li class="steps__item">
+          <span class="steps__circle">5</span>
+          <span class="steps__bar"></span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="header__divider"></div>
+</header>
+
+<main class="main">
+  <div class="container">
+    <div class="booking-top">
+      <a href="#" class="btn btn--secondary btn--back">← К выбору услуг</a>
+      <h1 class="booking-top__title">На какую дату планируем?</h1>
+    </div>
+
+    <div class="booking-grid">
+      <!-- Левая карточка: Календарь -->
+      <section class="card card--calendar" aria-labelledby="calendar-heading">
+        <div class="calendar__header">
+          <h2 id="calendar-heading" class="card__title">Июнь 2025</h2>
+          <div class="calendar__controls">
+            <button type="button" class="calendar__arrow" aria-label="Предыдущий месяц">
+              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true">
+                <path d="M6.5 1L1.5 6L6.5 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="calendar__arrow" aria-label="Следующий месяц">
+              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true">
+                <path d="M1.5 1L6.5 6L1.5 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="calendar__weekdays" aria-hidden="true">
+          <span class="calendar__weekday">Пн</span>
+          <span class="calendar__weekday">Вт</span>
+          <span class="calendar__weekday">Ср</span>
+          <span class="calendar__weekday">Чт</span>
+          <span class="calendar__weekday">Пт</span>
+          <span class="calendar__weekday">Сб</span>
+          <span class="calendar__weekday">Вс</span>
+        </div>
+
+        <div class="calendar__days" role="group" aria-label="Даты июня 2025">
+          <!-- Первая строка (недоступные даты) -->
+          <button type="button" class="day-btn day-btn--disabled" disabled>26</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>27</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>28</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>29</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>30</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>31</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>1</button>
+
+          <!-- Вторая строка -->
+          <button type="button" class="day-btn">2</button>
+          <button type="button" class="day-btn">3</button>
+          <button type="button" class="day-btn">4</button>
+          <button type="button" class="day-btn">5</button>
+          <button type="button" class="day-btn">6</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>7</button>
+          <button type="button" class="day-btn day-btn--disabled" disabled>8</button>
+
+          <!-- Третья строка -->
+          <button type="button" class="day-btn">9</button>
+          <button type="button" class="day-btn">10</button>
+          <button type="button" class="day-btn">11</button>
+          <button type="button" class="day-btn">12</button>
+          <button type="button" class="day-btn">13</button>
+          <button type="button" class="day-btn">14</button>
+          <button type="button" class="day-btn">15</button>
+
+          <!-- Четвёртая строка -->
+          <button type="button" class="day-btn">16</button>
+          <button type="button" class="day-btn">17</button>
+          <button type="button" class="day-btn">18</button>
+          <button type="button" class="day-btn">19</button>
+          <button type="button" class="day-btn">20</button>
+          <button type="button" class="day-btn">21</button>
+          <button type="button" class="day-btn">22</button>
+        </div>
+      </section>
+
+      <!-- Правая карточка: Доступное время -->
+      <section class="card card--time" aria-labelledby="time-heading">
+        <h2 id="time-heading" class="card__title card__title--time">Доступное время</h2>
+
+        <div class="time-slots" role="group" aria-label="Слоты времени">
+          <button type="button" class="slot-btn">10:00</button>
+          <button type="button" class="slot-btn slot-btn--busy" disabled>11:00</button>
+
+          <button type="button" class="slot-btn">12:00</button>
+          <button type="button" class="slot-btn slot-btn--busy" disabled>13:00</button>
+
+          <button type="button" class="slot-btn">14:00</button>
+          <button type="button" class="slot-btn">15:00</button>
+
+          <button type="button" class="slot-btn">16:00</button>
+          <button type="button" class="slot-btn">17:00</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="booking-actions">
+      <p class="booking-actions__hint">Выберите удобную дату и время визита</p>
+      <button type="button" class="btn btn--primary btn--submit">Ввести данные</button>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo">SERGIO</div>
+        <p class="footer__desc">Дружелюбное описание услуг</p>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Контакты</h3>
+        <address class="footer__address">
+          <div class="footer__contact-item">
+            <svg class="footer__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+            <span>ул. Садовая, 15, Москва</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg class="footer__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 4H9L11 9L8.5 10.5C9.57096 12.6715 11.3285 14.429 13.5 15.5L15 13L20 15V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21C14.0993 20.763 10.4202 19.1065 7.65683 16.3432C4.8935 13.5798 3.23705 9.90074 3 6C3 5.46957 3.21071 4.96086 3.58579 4.58579C3.96086 4.21071 4.46957 4 5 4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <a href="tel:+74951234567" class="footer__phone">+7 (495) 123-45-67</a>
+          </div>
+        </address>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Режим работы</h3>
+        <ul class="footer__schedule">
+          <li>Пн–Пт: 9:00 – 21:00</li>
+          <li>Сб–Вс: 10:00 – 19:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">© 2026. Все права защищены.</p>
+      <a href="#" class="footer__policy">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+</body>
 </html>
