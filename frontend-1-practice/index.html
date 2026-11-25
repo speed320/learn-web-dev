@@ -16,11 +16,11 @@
       <a href="#" class="logo">SERGIO</a>
       <nav class="nav" aria-label="Основная навигация">
         <ul class="nav__list">
-          <li class="nav__item"><a href="#" class="nav__link">Услуга</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Галерея</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Команда</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Отзывы</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Контакты</a></li>
+          <li class="nav__item"><a href="#services" class="nav__link">Услуга</a></li>
+          <li class="nav__item"><a href="#gallery" class="nav__link">Галерея</a></li>
+          <li class="nav__item"><a href="#team" class="nav__link">Команда</a></li>
+          <li class="nav__item"><a href="#reviews" class="nav__link">Отзывы</a></li>
+          <li class="nav__item"><a href="#contacts" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
     </div>
@@ -33,31 +33,23 @@
       <ol class="steps__list">
         <li class="steps__item steps__item--done">
           <span class="steps__circle">1</span>
-          <span class="steps__bar"></span>
+          <span class="steps__bar" aria-hidden="true"></span>
         </li>
-        <li class="steps__separator" aria-hidden="true"></li>
-
         <li class="steps__item steps__item--done">
           <span class="steps__circle">2</span>
-          <span class="steps__bar"></span>
+          <span class="steps__bar" aria-hidden="true"></span>
         </li>
-        <li class="steps__separator" aria-hidden="true"></li>
-
-        <li class="steps__item steps__item--done">
+        <li class="steps__item steps__item--done steps__item--current" aria-current="step">
           <span class="steps__circle">3</span>
-          <span class="steps__bar"></span>
+          <span class="steps__bar" aria-hidden="true"></span>
         </li>
-        <li class="steps__separator" aria-hidden="true"></li>
-
         <li class="steps__item">
           <span class="steps__circle">4</span>
-          <span class="steps__bar"></span>
+          <span class="steps__bar" aria-hidden="true"></span>
         </li>
-        <li class="steps__separator" aria-hidden="true"></li>
-
         <li class="steps__item">
           <span class="steps__circle">5</span>
-          <span class="steps__bar"></span>
+          <span class="steps__bar" aria-hidden="true"></span>
         </li>
       </ol>
     </nav>
@@ -69,7 +61,7 @@
 <main class="main">
   <div class="container">
     <div class="booking-top">
-      <a href="#" class="btn btn--secondary btn--back">← К выбору услуг</a>
+      <a href="#services" class="btn btn--secondary btn--back">← К выбору услуг</a>
       <h1 class="booking-top__title">На какую дату планируем?</h1>
     </div>
 
@@ -103,41 +95,59 @@
         </div>
 
         <div class="calendar__days" role="group" aria-label="Даты июня 2025">
-          <!-- Первая строка (недоступные даты) -->
-          <button type="button" class="day-btn day-btn--disabled" disabled>26</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>27</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>28</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>29</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>30</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>31</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>1</button>
+          <!-- 1 неделя -->
+          <button type="button" class="day-btn day-btn--disabled" aria-label="26 мая 2025, недоступно" disabled>26</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="27 мая 2025, недоступно" disabled>27</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="28 мая 2025, недоступно" disabled>28</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="29 мая 2025, недоступно" disabled>29</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="30 мая 2025, недоступно" disabled>30</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="31 мая 2025, недоступно" disabled>31</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="1 июня 2025, недоступно" disabled>1</button>
 
-          <!-- Вторая строка -->
-          <button type="button" class="day-btn">2</button>
-          <button type="button" class="day-btn">3</button>
-          <button type="button" class="day-btn">4</button>
-          <button type="button" class="day-btn">5</button>
-          <button type="button" class="day-btn">6</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>7</button>
-          <button type="button" class="day-btn day-btn--disabled" disabled>8</button>
+          <!-- 2 неделя -->
+          <button type="button" class="day-btn" aria-label="2 июня 2025" aria-pressed="false">2</button>
+          <button type="button" class="day-btn" aria-label="3 июня 2025" aria-pressed="false">3</button>
+          <button type="button" class="day-btn" aria-label="4 июня 2025" aria-pressed="false">4</button>
+          <button type="button" class="day-btn" aria-label="5 июня 2025" aria-pressed="false">5</button>
+          <button type="button" class="day-btn" aria-label="6 июня 2025" aria-pressed="false">6</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="7 июня 2025, недоступно" disabled>7</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="8 июня 2025, недоступно" disabled>8</button>
 
-          <!-- Третья строка -->
-          <button type="button" class="day-btn">9</button>
-          <button type="button" class="day-btn">10</button>
-          <button type="button" class="day-btn">11</button>
-          <button type="button" class="day-btn">12</button>
-          <button type="button" class="day-btn">13</button>
-          <button type="button" class="day-btn">14</button>
-          <button type="button" class="day-btn">15</button>
+          <!-- 3 неделя -->
+          <button type="button" class="day-btn" aria-label="9 июня 2025" aria-pressed="false">9</button>
+          <button type="button" class="day-btn day-btn--selected" aria-label="10 июня 2025" aria-pressed="true">10</button>
+          <button type="button" class="day-btn" aria-label="11 июня 2025" aria-pressed="false">11</button>
+          <button type="button" class="day-btn" aria-label="12 июня 2025" aria-pressed="false">12</button>
+          <button type="button" class="day-btn" aria-label="13 июня 2025" aria-pressed="false">13</button>
+          <button type="button" class="day-btn" aria-label="14 июня 2025" aria-pressed="false">14</button>
+          <button type="button" class="day-btn" aria-label="15 июня 2025" aria-pressed="false">15</button>
 
-          <!-- Четвёртая строка -->
-          <button type="button" class="day-btn">16</button>
-          <button type="button" class="day-btn">17</button>
-          <button type="button" class="day-btn">18</button>
-          <button type="button" class="day-btn">19</button>
-          <button type="button" class="day-btn">20</button>
-          <button type="button" class="day-btn">21</button>
-          <button type="button" class="day-btn">22</button>
+          <!-- 4 неделя -->
+          <button type="button" class="day-btn" aria-label="16 июня 2025" aria-pressed="false">16</button>
+          <button type="button" class="day-btn" aria-label="17 июня 2025" aria-pressed="false">17</button>
+          <button type="button" class="day-btn" aria-label="18 июня 2025" aria-pressed="false">18</button>
+          <button type="button" class="day-btn" aria-label="19 июня 2025" aria-pressed="false">19</button>
+          <button type="button" class="day-btn" aria-label="20 июня 2025" aria-pressed="false">20</button>
+          <button type="button" class="day-btn" aria-label="21 июня 2025" aria-pressed="false">21</button>
+          <button type="button" class="day-btn" aria-label="22 июня 2025" aria-pressed="false">22</button>
+
+          <!-- 5 неделя -->
+          <button type="button" class="day-btn" aria-label="23 июня 2025" aria-pressed="false">23</button>
+          <button type="button" class="day-btn" aria-label="24 июня 2025" aria-pressed="false">24</button>
+          <button type="button" class="day-btn" aria-label="25 июня 2025" aria-pressed="false">25</button>
+          <button type="button" class="day-btn" aria-label="26 июня 2025" aria-pressed="false">26</button>
+          <button type="button" class="day-btn" aria-label="27 июня 2025" aria-pressed="false">27</button>
+          <button type="button" class="day-btn" aria-label="28 июня 2025" aria-pressed="false">28</button>
+          <button type="button" class="day-btn" aria-label="29 июня 2025" aria-pressed="false">29</button>
+
+          <!-- 6 неделя -->
+          <button type="button" class="day-btn" aria-label="30 июня 2025" aria-pressed="false">30</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="1 июля 2025, недоступно" disabled>1</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="2 июля 2025, недоступно" disabled>2</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="3 июля 2025, недоступно" disabled>3</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="4 июля 2025, недоступно" disabled>4</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="5 июля 2025, недоступно" disabled>5</button>
+          <button type="button" class="day-btn day-btn--disabled" aria-label="6 июля 2025, недоступно" disabled>6</button>
         </div>
       </section>
 
@@ -146,17 +156,17 @@
         <h2 id="time-heading" class="card__title card__title--time">Доступное время</h2>
 
         <div class="time-slots" role="group" aria-label="Слоты времени">
-          <button type="button" class="slot-btn">10:00</button>
-          <button type="button" class="slot-btn slot-btn--busy" disabled>11:00</button>
+          <button type="button" class="slot-btn" aria-pressed="false">10:00</button>
+          <button type="button" class="slot-btn slot-btn--busy" aria-label="11:00, занято" disabled>11:00</button>
 
-          <button type="button" class="slot-btn">12:00</button>
-          <button type="button" class="slot-btn slot-btn--busy" disabled>13:00</button>
+          <button type="button" class="slot-btn" aria-pressed="false">12:00</button>
+          <button type="button" class="slot-btn slot-btn--busy" aria-label="13:00, занято" disabled>13:00</button>
 
-          <button type="button" class="slot-btn">14:00</button>
-          <button type="button" class="slot-btn">15:00</button>
+          <button type="button" class="slot-btn slot-btn--selected" aria-pressed="true">14:00</button>
+          <button type="button" class="slot-btn" aria-pressed="false">15:00</button>
 
-          <button type="button" class="slot-btn">16:00</button>
-          <button type="button" class="slot-btn">17:00</button>
+          <button type="button" class="slot-btn" aria-pressed="false">16:00</button>
+          <button type="button" class="slot-btn" aria-pressed="false">17:00</button>
         </div>
       </section>
     </div>
@@ -168,12 +178,12 @@
   </div>
 </main>
 
-<footer class="footer">
+<footer id="contacts" class="footer">
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
         <div class="footer__logo">SERGIO</div>
-        <p class="footer__desc">Дружелюбное описание услуг</p>
+        <p class="footer__desc">Мужской барбершоп в центре Москвы: классические стрижки, оформление бороды и королевское бритьё.</p>
       </div>
 
       <div class="footer__col">
@@ -206,7 +216,7 @@
 
     <div class="footer__bottom">
       <p class="footer__copyright">© 2026. Все права защищены.</p>
-      <a href="#" class="footer__policy">Политика конфиденциальности</a>
+      <a href="#privacy" class="footer__policy">Политика конфиденциальности</a>
     </div>
   </div>
 </footer>

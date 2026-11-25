@@ -1,6 +1,3 @@
-/* Стили страницы.
-   Пишите здесь. */
-
 *,
 *::before,
 *::after {
@@ -20,7 +17,7 @@
   --text-muted: #9b8f8f;
   --text-dark: #2c2626;
 
-  /* Кнопка основная (бирюзовая из UI-kit) */
+  /* Кнопка основная и состояние selected (бирюзовая из UI-kit) */
   --primary-bg: #176366;
   --primary-border: #114c4e;
   --primary-hover-bg: #3b7b7e;
@@ -40,6 +37,9 @@
   --step-done: #176366;
   --step-todo: #679192;
   --line-divider: rgba(255, 255, 255, 0.22);
+
+  --focus-dark-bg: #ffffff;
+  --focus-light-bg: #114c4e;
 }
 
 html,
@@ -83,10 +83,16 @@ body {
   letter-spacing: 0.02em;
   color: var(--text-light);
   text-decoration: none;
+  border-radius: 4px;
 }
 
 .logo:hover {
   opacity: 0.85;
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--focus-dark-bg);
+  outline-offset: 4px;
 }
 
 .nav__list {
@@ -101,12 +107,18 @@ body {
   font-weight: 400;
   color: var(--text-soft);
   text-decoration: none;
+  border-radius: 4px;
   transition: color 0.15s ease;
 }
 
 .nav__link:hover {
   color: var(--text-light);
   text-decoration: underline;
+}
+
+.nav__link:focus-visible {
+  outline: 2px solid var(--focus-dark-bg);
+  outline-offset: 4px;
 }
 
 .header__divider {
@@ -129,8 +141,16 @@ body {
 .steps__item {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   flex: 1;
+}
+
+.steps__item:not(:last-child)::after {
+  content: '';
+  width: 18px;
+  height: 1px;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.35);
 }
 
 .steps__circle {
@@ -159,11 +179,8 @@ body {
   background-color: var(--step-done);
 }
 
-.steps__separator {
-  width: 18px;
-  height: 1px;
-  flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 0.35);
+.steps__item--current .steps__circle {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 /* ================= MAIN ================= */
@@ -198,6 +215,11 @@ body {
   border-radius: 7px;
   cursor: pointer;
   transition: background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus-dark-bg);
+  outline-offset: 3px;
 }
 
 .btn--secondary {
@@ -313,6 +335,11 @@ body {
   background-color: #e3dfdc;
 }
 
+.calendar__arrow:focus-visible {
+  outline: 2px solid var(--focus-light-bg);
+  outline-offset: 2px;
+}
+
 .calendar__weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -337,6 +364,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
   height: 36px;
   border-radius: 999px;
   border: 1px solid var(--secondary-border);
@@ -346,16 +374,33 @@ body {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.day-btn:hover:not(:disabled) {
+.day-btn:hover:not(:disabled):not(.day-btn--selected) {
   background-color: var(--secondary-hover-bg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .day-btn:active:not(:disabled) {
   background-color: var(--secondary-active-bg);
+}
+
+.day-btn:focus-visible {
+  outline: 3px solid var(--focus-light-bg);
+  outline-offset: 2px;
+}
+
+.day-btn--selected {
+  background-color: var(--primary-bg);
+  border-color: var(--primary-border);
+  color: var(--text-light);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(23, 99, 102, 0.35);
+}
+
+.day-btn--selected:hover:not(:disabled) {
+  background-color: var(--primary-hover-bg);
 }
 
 .day-btn--disabled,
@@ -386,16 +431,32 @@ body {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.slot-btn:hover:not(:disabled) {
+.slot-btn:hover:not(:disabled):not(.slot-btn--selected) {
   background-color: var(--secondary-hover-bg);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .slot-btn:active:not(:disabled) {
   background-color: var(--secondary-active-bg);
+}
+
+.slot-btn:focus-visible {
+  outline: 3px solid var(--focus-light-bg);
+  outline-offset: 2px;
+}
+
+.slot-btn--selected {
+  background-color: var(--primary-bg);
+  border-color: var(--primary-border);
+  color: var(--text-light);
+  box-shadow: 0 3px 10px rgba(23, 99, 102, 0.35);
+}
+
+.slot-btn--selected:hover:not(:disabled) {
+  background-color: var(--primary-hover-bg);
 }
 
 .slot-btn--busy,
@@ -441,12 +502,13 @@ body {
   font-size: 22px;
   font-weight: 700;
   color: var(--text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .footer__desc {
+  max-width: 280px;
   font-size: 14px;
-  color: var(--text-muted);
+  color: #b7acac;
 }
 
 .footer__col {
@@ -487,10 +549,16 @@ body {
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
+  border-radius: 4px;
 }
 
 .footer__phone:hover {
   text-decoration: underline;
+}
+
+.footer__phone:focus-visible {
+  outline: 2px solid var(--focus-dark-bg);
+  outline-offset: 3px;
 }
 
 .footer__schedule {
@@ -515,10 +583,16 @@ body {
 .footer__policy {
   color: var(--text-muted);
   text-decoration: underline;
+  border-radius: 4px;
 }
 
 .footer__policy:hover {
   color: var(--text-light);
+}
+
+.footer__policy:focus-visible {
+  outline: 2px solid var(--focus-dark-bg);
+  outline-offset: 3px;
 }
 
 /* ================= АДАПТИВ ================= */
@@ -572,5 +646,73 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .steps {
+    padding: 16px 0;
+  }
+
+  .steps__list {
+    gap: 6px;
+  }
+
+  .steps__item {
+    gap: 6px;
+  }
+
+  .steps__item:not(:last-child)::after {
+    width: 8px;
+  }
+
+  .steps__circle {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .main {
+    padding: 28px 0 44px;
+  }
+
+  .card--calendar,
+  .card--time {
+    padding: 18px 14px 20px;
+  }
+
+  .calendar__header {
+    margin-bottom: 16px;
+  }
+
+  .calendar__weekdays {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .calendar__weekday {
+    font-size: 11px;
+  }
+
+  .calendar__days {
+    gap: 4px;
+  }
+
+  .day-btn {
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .time-slots {
+    gap: 10px 12px;
+  }
+
+  .slot-btn {
+    height: 42px;
+    font-size: 14px;
   }
 }
